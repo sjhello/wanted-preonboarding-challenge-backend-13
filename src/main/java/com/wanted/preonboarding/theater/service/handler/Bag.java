@@ -1,13 +1,24 @@
 package com.wanted.preonboarding.theater.service.handler;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
+
 public class Bag {
+
+    @Getter
     private Long amount;
+
+    @Getter
     private final Invitation invitation;
+
+    @Setter(AccessLevel.PRIVATE)
     private Ticket ticket;
 
     public Bag(long amount){
         this(null, amount);
     }
+
     public Bag(Invitation invitation, long amount){
         this.invitation = invitation;
         this.amount = amount;
@@ -16,16 +27,8 @@ public class Bag {
     public boolean hasInvitation() {
         return invitation != null;
     }
-    public boolean hasTicket() {
-        return ticket != null;
-    }
-    public void setTicket(Ticket ticket) {
-        this.ticket = ticket;
-    }
-    public void minusAmount(long amount) {
-        this.amount -= amount;
-    }
-    public void plusAmount(long amount) {
-        this.amount += amount;
+
+    public void pushTicket(Ticket ticket) {
+        setTicket(ticket);
     }
 }
