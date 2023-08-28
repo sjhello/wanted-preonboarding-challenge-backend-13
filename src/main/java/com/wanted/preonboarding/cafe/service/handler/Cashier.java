@@ -12,9 +12,15 @@ public class Cashier {
     public long calculateTotalPrice(Map<String, Integer> orders) {
         long totalPrice = 0L;
         long americanoPrice = 100L;
+        long milkPrice = 20L;
+        long lattePrice = 10L;
         for (String key : orders.keySet()) {
             if (key.equalsIgnoreCase("AMERICANO"))
                 totalPrice += americanoPrice * orders.get(key);
+            if (key.equalsIgnoreCase("MILK"))
+                totalPrice += milkPrice * orders.get(key);
+            if (key.equalsIgnoreCase("LATTE"))
+                totalPrice += lattePrice * orders.get(key);
         }
         return totalPrice;
     }
